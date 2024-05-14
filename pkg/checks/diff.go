@@ -74,8 +74,7 @@ func (o *DiffOptions) Diff() error {
 			return fmt.Errorf("failed to read %s: %w", filename, err)
 		}
 
-		err = tar.Untar(newFile, filepath.Join(dirNewApk, newPackageName))
-		if err != nil {
+		if err := tar.Untar(newFile, filepath.Join(dirNewApk, newPackageName)); err != nil {
 			return fmt.Errorf("failed to untar new apk: %w", err)
 		}
 
